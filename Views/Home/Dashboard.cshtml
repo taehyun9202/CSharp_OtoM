@@ -1,0 +1,42 @@
+@model User
+<partial name="BronyForm.cshtml" model="new BronySample(){UserId = @Model.UserId}"></partial>
+@* @{
+    decimal sum = 0.00M;
+    foreach (var item in Model.Bronies)
+    {
+        sum += @item.Price;
+    }
+
+} *@
+@{
+    decimal sum = Model.Bronies.Sum(b => b.Price);
+}
+
+<div class="jumbotron">
+    <h1>Hello @Model.Name</h1>
+    <p>Number of Bronies: @Model.Bronies.Count</p>
+    <p>Total Amounts: @sum</p>
+</div>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Condition</th>
+            <th>Price</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Bronies)
+        {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Color</td>
+            <td>@item.Condition</td>
+            <td>@item.Price</td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<a href="/allitem" class="btn btn-warning">See all the Bronies</a>

@@ -1,0 +1,25 @@
+@model List<BronySample>
+<h1>Here are List of All Bronies</h1>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Color</th>
+            <th>Condition</th>
+            <th>Price</th>
+            <th>Owner</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>@item.Name</td>
+            <td>@item.Color</td>
+            <td>@item.Condition</td>
+            <td>@item.Price</td>
+            <td><a href="/profile/@item.Owner.UserId">@item.Owner.Name</a></td>
+        </tr>
+        }
+    </tbody>
+
